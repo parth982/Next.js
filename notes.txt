@@ -1,0 +1,62 @@
+Server Components Cannot:
+Listen or Access to Browser APIs
+Maintain State
+Use Effects
+
+All Components in app Folder are by-default server side rendering.
+To convert to client side rendering we use 'client use' at top.
+
+In Client-Side Rendering (CSR), two backend requests are needed: one to fetch a basic HTML shell and another to fetch data and render the page on the client side.
+
+In Server-Side Rendering (SSR), only one backend request is required as the server generates a fully rendered HTML page with data before sending it to the client.
+
+Next has in built caching , but only if we use fetch not third party like axios.
+
+To Disable Caching:
+const res = await fetch("https://jsonplaceholder.typicode.com/users",{cache: 'no-store'});
+
+To Fetch Fresh Data into cache every 10 Seconds:
+const res = await fetch("https://jsonplaceholder.typicode.com/users",{next:{revalidate:10}});
+
+Whenever we use fetch function next.js will cache data, the data is treated as static or unchanged.
+Static Data is rendered at build time.
+Dynamic Data is rendered at Request Time.
+
+But when we disable caching the data is not treated as static but Dynamic hence is rendered at Request time.
+
+To Build App for Production we use 'npm run build'
+
+
+Rendering:
+1> Client Side
+2> Server Side : 2 Types 
+    a> Static [At Build Time]
+    b> Dynamic [At Request Time]
+
+Next.js has Built in Routing based on File System.
+Only Page files in app folder are publicly accessible.
+we slug for multiple params or API filters use double brackets [[...slug]] to access the route without any params too.
+
+layout file defines common UI for the pages and child Pages from where it is defined.
+
+Remember all the Components in app folder are SSR until we specify as CSR by 'use client'.
+
+
+About Link:
+Link only downloads content of target page.
+Link Pre-fetches links in the particular page.
+Link caches Pages on client side for a session so no need to again fetch from server. But only for single session, means 1 full page reload.
+Suspense to show loading content while Component is rendering.
+
+For Root File to do it wither add loading.tsx in app folder directly or in app folder's layout.tsx use this: <Suspense fallback={<p>LoadingMain...</p>}>{children}</Suspense>
+
+Not-Found Error Handling: 
+If we go to random url we get standard 404 not-found page from next.js but to make custom one make not-found.tsx folder in app's root folder.
+To make it more custom for a specific route make not-found.tsx in that routes folder like users/id.
+
+Unexpected Error Handling:
+To Handle these create error.tsx in app folder.
+Same basic concept of level like in Not-found error.
+
+Inside a New Folder in app we can either have page.tsx or route.tsx file not both.
+If we have to display html content then we use page.tsx other wise if we want to handle http request we use route.tsx
