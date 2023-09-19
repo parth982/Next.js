@@ -60,3 +60,10 @@ Same basic concept of level like in Not-found error.
 
 Inside a New Folder in app we can either have page.tsx or route.tsx file not both.
 If we have to display html content then we use page.tsx other wise if we want to handle http request we use route.tsx
+
+To set-up prisma : npx prisma init
+To add migration : npx prisma migrate dev
+
+Prisma Migrate is an declarative database schema migration tool that enables you to: Keep your database schema in sync with your Prisma schema as it evolves and. Maintain existing data in your database.
+
+Either to import changes from repo to db or vice-versa we use migration command.
