@@ -67,3 +67,30 @@ To add migration : npx prisma migrate dev
 Prisma Migrate is an declarative database schema migration tool that enables you to: Keep your database schema in sync with your Prisma schema as it evolves and. Maintain existing data in your database.
 
 Either to import changes from repo to db or vice-versa we use migration command.
+
+Upload Files: Use Cloudinary.
+Installation Steps: https://next.cloudinary.dev/
+When we use Cloudinary to upload the media files gets stored in cloud.
+Options can also be added to Cloudinary Widget to Customize it and handle diff configs.
+
+NextAuth.js or Auth.js:
+Used for Authentication
+
+'openssl rand -base64 32' generates a random sequence of bytes and encodes it in base64 format. 
+
+OAuth Means Google for use will Authenticate the Users Info.
+
+Cookies are small pieces of data that a website stores on a user's computer when he visits the website. 
+These pieces of data are sent back to the server every time the user returns, allowing the website to recognize the user & preferences.
+Helps in Session Management for Auth so don't have to Login again on same website.
+
+We use Adapter to store the User Info who Logged in into our Database rather than cookies. Cmd: npm i @next-auth/prisma-adapter
+
+Using Nextjs Auth eg in Google Provider when we Login it Creates user session by storing a JWT in cookies. So each time User visits site the cookie with JWT is sent to Backend.
+
+middleware.ts:
+To Protect Routes we create this file which is executed for every Request, it is in Root folder of Next.js Project.
+
+By Default our Session Strategy is JWT by default but we use Use Adapter it is by default database, so we have to manually change it to jwt.
+
+We install -D @types/ to get autocomplete.
